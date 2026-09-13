@@ -9,7 +9,7 @@ export default function App() {
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/api/appointments'
+        'https://appointment-booking-app-dqqt.onrender.com/'
       );
 
       setAppointments(res.data);

@@ -38,7 +38,7 @@ export default function AppointmentForm({ fetchAppointments }) {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/appointments',
+        'https://appointment-booking-app-dqqt.onrender.com/',
         formData
       );
 

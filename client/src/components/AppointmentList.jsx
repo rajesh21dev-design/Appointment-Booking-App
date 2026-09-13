@@ -73,7 +73,7 @@ export default function AppointmentList({
 
     try {
       await axios.patch(
-        `http://localhost:5000/api/appointments/${id}`,
+        `https://appointment-booking-app-dqqt.onrender.com/${id}`,
         { status }
       );
 
@@ -96,7 +96,7 @@ export default function AppointmentList({
 
       try {
         await axios.delete(
-          `http://localhost:5000/api/appointments/${id}`
+          `https://appointment-booking-app-dqqt.onrender.com/${id}`
         );
 
         fetchAppointments();
