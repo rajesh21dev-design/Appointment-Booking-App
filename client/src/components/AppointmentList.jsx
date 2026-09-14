@@ -1,62 +1,3 @@
-// import React from 'react';
-// import axios from 'axios';
-
-// export default function AppointmentList({ appointments, fetchAppointments }) {
-//   const updateStatus = async (id, status) => {
-//     await axios.patch(`http://localhost:5000/api/appointments/${id}`, { status });
-//     fetchAppointments();
-//   };
-
-//   const deleteAppointment = async (id) => {
-//     if (window.confirm('Are you sure you want to delete this appointment?')) {
-//       await axios.delete(`http://localhost:5000/api/appointments/${id}`);
-//       fetchAppointments();
-//     }
-//   };
-
-//   return (
-//     <div className="mt-8 overflow-x-auto">
-//       <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-//         <thead className="bg-gray-100 text-gray-700 text-left text-sm uppercase font-semibold">
-//           <tr>
-//             <th className="p-4">Patient</th>
-//             <th className="p-4">Mobile</th>
-//             <th className="p-4">Doctor</th>
-//             <th className="p-4">Date & Time</th>
-//             <th className="p-4">Status</th>
-//             <th className="p-4">Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody className="divide-y divide-gray-200 text-sm">
-//           {appointments.map((appt) => (
-//             <tr key={appt._id}>
-//               <td className="p-4 font-medium">{appt.patientName}</td>
-//               <td className="p-4 text-gray-600">{appt.mobileNumber}</td>
-//               <td className="p-4 text-gray-600">{appt.doctorName}</td>
-//               <td className="p-4 text-gray-600">{appt.appointmentDate} | {appt.appointmentTime}</td>
-//               <td className="p-4">
-//                 <span className={`px-2 py-1 rounded text-xs font-semibold ${appt.status === 'Completed' ? 'bg-green-100 text-green-800' : appt.status === 'Cancelled' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}`}>
-//                   {appt.status}
-//                 </span>
-//               </td>
-//               <td className="p-4 space-x-2">
-//                 {appt.status === 'Pending' && (
-//                   <>
-//                     <button onClick={() => updateStatus(appt._id, 'Completed')} className="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600">Complete</button>
-//                     <button onClick={() => updateStatus(appt._id, 'Cancelled')} className="bg-amber-500 text-white px-2 py-1 rounded text-xs hover:bg-amber-600">Cancel</button>
-//                   </>
-//                 )}
-//                 <button onClick={() => deleteAppointment(appt._id)} className="bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700">Delete</button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// }
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -73,7 +14,7 @@ export default function AppointmentList({
 
     try {
       await axios.patch(
-        `https://appointment-booking-app-dqqt.onrender.com/${id}`,
+        `https://appointment-booking-app-dqqt.onrender.com/api/appointments/${id}`,
         { status }
       );
 
@@ -96,7 +37,7 @@ export default function AppointmentList({
 
       try {
         await axios.delete(
-          `https://appointment-booking-app-dqqt.onrender.com/${id}`
+          `https://appointment-booking-app-dqqt.onrender.com/api/appointments/${id}`
         );
 
         fetchAppointments();
