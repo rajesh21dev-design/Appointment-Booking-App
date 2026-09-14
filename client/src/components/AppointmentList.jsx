@@ -265,7 +265,7 @@ import axios from 'axios';
 export default function AppointmentList({ appointments, fetchAppointments }) {
   const updateStatus = async (id, status) => {
     try {
-      await axios.patch(`https://onrender.com{id}`, { status });
+      await axios.patch(`https://appointment-booking-app-dqqt.onrender.com/api/appointments/${id}`, { status });
       fetchAppointments();
     } catch (err) {
       console.error("Error updating status:", err);
@@ -275,7 +275,7 @@ export default function AppointmentList({ appointments, fetchAppointments }) {
   const deleteAppointment = async (id) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
       try {
-        await axios.delete(`https://onrender.com{id}`);
+        await axios.delete(`https://appointment-booking-app-dqqt.onrender.com/api/appointments/${id}`);
         fetchAppointments();
       } catch (err) {
         console.error("Error deleting appointment:", err);
@@ -296,7 +296,6 @@ export default function AppointmentList({ appointments, fetchAppointments }) {
         </div>
       ) : (
         <>
-          {/* 📱 Mobile Responsive View: Cards layout hidden on large viewports */}
           <div className="block md:hidden space-y-4">
             {appointments.map((appt) => (
               <div key={appt._id} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 space-y-3">
@@ -319,7 +318,6 @@ export default function AppointmentList({ appointments, fetchAppointments }) {
                   <div><span className="font-medium text-gray-700">Schedule:</span> {appt.appointmentDate} at {appt.appointmentTime}</div>
                 </div>
 
-                {/* Mobile Button Actions Grid */}
                 <div className="grid grid-cols-3 gap-2 pt-1">
                   {appt.status === 'Pending' ? (
                     <>
@@ -335,7 +333,6 @@ export default function AppointmentList({ appointments, fetchAppointments }) {
             ))}
           </div>
 
-          {/* 💻 Desktop View: Table layout hidden on mobile viewports */}
           <div className="hidden md:block overflow-hidden bg-white rounded-2xl shadow border border-gray-100">
             <table className="min-w-full divide-y divide-gray-200 text-left">
               <thead className="bg-gray-50 text-xs font-semibold uppercase text-gray-500 tracking-wider">
